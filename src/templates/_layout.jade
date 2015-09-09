@@ -1,0 +1,13 @@
+include bemto/bemto
+include _helpers/_variables
+include _helpers/_mixins
+
+doctype html
+html(lang= "ru")
+  head
+    include _components/_head
+
+  body
+    block header
+    block content
+    block footer

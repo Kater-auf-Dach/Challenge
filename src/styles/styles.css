@@ -1,0 +1,139 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+.cl:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+$color-primary: hsl(249, 61%, 58%);
+$color-secondary:  hsl(0, 0%, 100%);
+$color-tertiary: hsl(0, 0%, 94%);
+$color-4: hsl(249, 31%, 21%);;
+
+$color-text: #fff;
+
+$html-font_base: 62.5%;
+$font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+
+$weight_bold: 700;
+$weight_light: 300;
+
+$sm: 'min-width: 480px';
+$md: 'min-width: 768px';
+$lg: 'min-width: 960px';
+
+html {
+  font-size: $html-font_base;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: $font-family;
+}
+.wrapper {
+  width: 108rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.page-header {
+  background-color: $color-primary;
+  color: $color-text;
+}
+.top-bar { @extend clear;}
+.logo {
+  float: left;
+  width: 182px;
+  height: 82px;
+  background: url(../img/logotype.png);
+}
+.main-menu {
+  margin-left: 20px;
+  float: right;
+  font-size: 0;
+  text-align: right;
+  &__item {
+    display: inline-block;
+    vertical-align: top;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  &__link {
+    float: right;
+    padding: 0 30px;
+    color: $color-text;
+    text-decoration: none;
+  }
+}
+
+.intro {
+  background-color: $color-primary;
+  text-align: left;
+  &__title {
+    width: 43rem;
+    margin-bottom: 4rem;
+    color: $color-text;
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 5rem;
+  }
+  &__text {
+    width: 31rem;
+    margin-bottom: 5.3rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 3rem;
+    color: hsl(249, 70%, 83%)
+   }
+}
+.btn {
+  text-transform: uppercase;
+  background-color: hsl(249, 45%, 32%);
+  padding: 2.5rem 8rem;
+  color: $color-text;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  border: none;
+  outline: none;
+  &_request {
+    //width: 31rem;
+    margin-bottom: 10.4rem;
+  }
+}
+.features {
+  background-color: $color-tertiary;
+  &__item {
+    width: 32rem;
+    margin-left: 3rem;
+    float: left;
+    text-align: center;
+    &:last-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+
+.learn-types {
+  background-color: $color-secondary;
+}
+.feedback {
+  background-color: $color-tertiary;
+}
+.page-footer {
+  background-color: $color-4;
+}

@@ -1,0 +1,31 @@
+//-Table
+mixin row(items)
+  tr.table-row
+    each item in items
+      if items.index
+        th= item.content
+      else
+        td= item.content
+mixin table(tableData)
+  table
+    each item in tableData
+      +row(item)
+
+//-Menu
+mixin list(items)
+  each item in items
+    +e('li').item
+      +e('a').link(href= item.url)= item.name
+      if (item.sub)
+        +b('ul').submenu
+          each subitem in item.sub
+            +e('li').item: +e('a').link(href= subitem.url)= subitem.name
+mixin menu(menuItems)
+  each item in menuItems
+    +list(item)
+
+
+//-mixin menu(prefix)
+//- nav(class= prefix + 'menu')
+//-   each item in mainMenu
+//-     li(class= prefix + 'menu__item'): a(class= prefix + 'menu__link', href= item.url)= item.title
