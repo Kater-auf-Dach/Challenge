@@ -24,17 +24,19 @@ module.exports = function(grunt) {
       options: {
         processors: [
           require('postcss-size'),
-          require("postcss-import"),
+          require('postcss-import'),
           require('postcss-mixins'),
-          require('postcss-simple-extend'),
+          //require('postcss-simple-extend'),
           require('postcss-conditionals'),
           require('postcss-for'),
           require('postcss-simple-vars'),
           require('postcss-nested'),
           require('postcss-extend'),
+          require('postcss-calc'),
+          require("postcss-color-function"),
           require('postcss-color-hcl'),
           require('autoprefixer')({browsers: 'last 2 version'}),
-          require('cssnano')
+          //require('cssnano')({convertValues: false}, {autoprefixer: false})
         ]
       },
       dist: {

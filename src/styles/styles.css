@@ -1,24 +1,33 @@
-html {
-  box-sizing: border-box;
+
+@define-mixin fonts $fontSize, $lineHeight, $fontWeight: normal, $fontFamily: $font-family {
+  font-size: calc($fontSize / 10rem); 
+  line-height: calc($lineHeight / $fontSize);
+  font-weight: $fontWeight;
+  font-family: $fontFamily;
+}
+  
+@define-placeholder clear:after {
+  content: '';
+  display: table;
+  clear: both;  
 }
 
+html {
+  box-sizing: border-box;
+} 
+ 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-}
-.cl:after {
-  content: '';
-  display: table;
-  clear: both;
-}
+} 
 
 $color-primary: hsl(249, 61%, 58%);
 $color-secondary:  hsl(0, 0%, 100%);
-$color-tertiary: hsl(0, 0%, 94%);
-$color-4: hsl(249, 31%, 21%);;
+$color-tertiary: color($color-secondary l(-6));
+$color-4: hsl(249, 31%, 21%);
 
 $color-text: #fff;
 
@@ -44,6 +53,7 @@ body {
   width: 108rem;
   margin: 0 auto;
   padding: 0 3rem;
+  @mixin fonts 16, 32, bold; 
 }
 
 .page-header {
