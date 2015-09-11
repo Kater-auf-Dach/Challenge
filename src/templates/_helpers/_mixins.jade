@@ -1,13 +1,13 @@
 //-Table
 mixin row(items)
-  tr.table-row
+  tr.table__row
     each item in items
       if items.index
-        th= item.content
+        th.table__heading= item.content
       else
-        td= item.content
-mixin table(tableData)
-  table
+        td.table__data= item.content
+mixin table(tableClass, tableData)
+  table(class= tableClass)
     each item in tableData
       +row(item)
 
@@ -15,11 +15,11 @@ mixin table(tableData)
 mixin list(items)
   each item in items
     +e('li').item
-      +e('a').link(href= item.url)= item.name
+      +e('a').link.link(href= item.url)= item.name
       if (item.sub)
         +b('ul').submenu
           each subitem in item.sub
-            +e('li').item: +e('a').link(href= subitem.url)= subitem.name
+            +e('li').item: +e('a').link.link(href= subitem.url)= subitem.name
 mixin menu(menuItems)
   each item in menuItems
     +list(item)

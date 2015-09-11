@@ -1,149 +1,265 @@
+$color_base: hsl(0, 0%, 100%);
+$color_secondary: hsl(249, 61%, 58%);
+$color_tertiary: color($color_base l(- 6%));
+
+$color-text: hsl(0, 0%, 100%);
+$color-text_add: #e4e4e4;
+
+$html-font_base: 62.5%;
+$font-family: 'Trebuchet MS', 'Fira Sans', Arial, sans-serif;
+$font-family_add: 'Tahoma', 'Fira Sans', Arial, sans-serif;
+
+/*$border: 2px solid color($color_base l(- 35%));*/
+
+$sm: 'min-width: 480px';
+$md: 'min-width: 768px';
+$lg: 'min-width: 960px';
+
 
 @define-mixin fonts $fontSize, $lineHeight, $fontWeight: normal, $fontFamily: $font-family {
-  font-size: calc($fontSize / 10rem); 
+  font-size: calc($fontSize / 10rem);
   line-height: calc($lineHeight / $fontSize);
   font-weight: $fontWeight;
   font-family: $fontFamily;
 }
-  
+
+@define-mixin border $b-width: 2px, $b-style: solid, $b-color: color($color_base l(- 35%)) {
+  border-width: $b-width;
+  border-style: $b-style;
+  border-color: $b-color;
+}
+
+
 @define-placeholder clear:after {
   content: '';
   display: table;
-  clear: both;  
+  clear: both;
 }
 
+
 html {
+  font-size: $html-font_base;
   box-sizing: border-box;
-} 
- 
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-} 
-
-$color-primary: hsl(249, 61%, 58%);
-$color-secondary:  hsl(0, 0%, 100%);
-$color-tertiary: color($color-secondary l(-6));
-$color-4: hsl(249, 31%, 21%);
-
-$color-text: #fff;
-
-$html-font_base: 62.5%;
-$font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
-
-$weight_bold: 700;
-$weight_light: 300;
-
-$sm: 'min-width: 480px';
-$md: 'min-width: 768px';
-$lg: 'min-width: 960px';
-
-html {
-  font-size: $html-font_base;
+  //outline: 1px dotted red;
 }
 
 body {
   font-size: 1.6rem;
   font-family: $font-family;
 }
+
 .wrapper {
-  width: 108rem;
+  max-width: 108rem;
   margin: 0 auto;
   padding: 0 3rem;
-  @mixin fonts 16, 32, bold; 
+  @extend clear;
 }
 
+.link {
+  display: block;
+  text-decoration: none;
+}
+
+.top-bar {@extend clear; }
+
 .page-header {
-  background-color: $color-primary;
+  background-color: $color_secondary;
   color: $color-text;
 }
-.top-bar { @extend clear;}
+
 .logo {
   float: left;
   width: 182px;
   height: 82px;
-  background: url(../img/logotype.png);
+  background: url(../img/logotype.png) no-repeat 0% 0%;
 }
+
 .main-menu {
-  margin-left: 20px;
+  margin-left: 2rem;
   float: right;
   font-size: 0;
   text-align: right;
+
   &__item {
     display: inline-block;
     vertical-align: top;
     list-style-type: none;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
+    @mixin fonts 18, 24, 700;
   }
+
   &__link {
     float: right;
-    padding: 0 30px;
-    color: $color-text;
-    text-decoration: none;
+    padding: 0 3rem;
+    color: $color_base;
   }
 }
 
+.headings { @mixin fonts 45, 50, 700; }
+
 .intro {
-  background-color: $color-primary;
+  background-color: $color_secondary;
   text-align: left;
+
   &__title {
     width: 43rem;
     margin-bottom: 4rem;
-    color: $color-text;
-    font-size: 4.5rem;
-    font-weight: 700;
-    line-height: 5rem;
+    color: $color_base;
   }
+
   &__text {
     width: 31rem;
     margin-bottom: 5.3rem;
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 3rem;
-    color: hsl(249, 70%, 83%)
+    @mixin fonts 18, 30, 400, $font-family_add;
+    color: hsl(249, 70%, 83%);
    }
 }
+
 .btn {
   text-transform: uppercase;
-  background-color: hsl(249, 45%, 32%);
+  background-color: hsl(257, 54%, 30%);
   padding: 2.5rem 8rem;
-  color: $color-text;
+  color: $color_base;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
   text-align: center;
-  border: none;
+  border-width: 0;
   outline: none;
+
   &_request {
-    //width: 31rem;
+
     margin-bottom: 10.4rem;
   }
+  &_send {
+
+  }
 }
+
 .features {
-  background-color: $color-tertiary;
+  padding-top: 5rem;
+  padding-bottom: 4.5rem;
+  background-color: $color_tertiary;
+
   &__item {
-    width: 32rem;
-    margin-left: 3rem;
+    width:33.333%;
+    padding: 0 1.5rem;
     float: left;
     text-align: center;
-    &:last-of-type {
-      margin-left: 0;
-    }
+    background: $color_tertiary url(../img/icon1.svg) no-repeat 50% top;
+
+  }
+
+  &__title {
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+    @mixin fonts 22, 24, 700;
+  }
+
+  &__text {
+    @mixin fonts 18, 24, 400, $font-family_add;
   }
 }
 
 
 .learn-types {
-  background-color: $color-secondary;
+  background-color: $color_base;
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+
+  &__title {
+    float: left;
+    margin-bottom: 5rem;
+  }
+
+  &__more-link {
+    float: right;
+    margin-top: 1rem; /* (h title - h link) / 2 */
+    text-decoration: underline;
+    color: color($color_secondary s(- 16%) l(- 26%));
+    @mixin fonts 18, 30, 400, $font-family_add;
+  }
 }
+
+.learn-types__table {
+  width: 100%;
+  border-top: 3px solid color($color_base l(- 35%));
+  border-collapse: collapse;
+
+  .table__heading {
+    background-color: $color_tertiary;
+    color: color($color_tertiary l(- 69%));
+    @mixin fonts 18, 30, 400, $font-family_add;
+    @mixin border;
+    padding: 3rem 3rem;
+  }
+  .table__data {
+    @mixin border;
+    padding: 3rem 3rem;
+  }
+}
+
+
 .feedback {
-  background-color: $color-tertiary;
+  padding-top: 5rem;
+  padding-bottom: 7.5rem;
+  background-color: $color_tertiary;
 }
+
+
+.feedback-form {
+  &__input {
+    padding: 1.8rem 2.8rem;
+    @mixin border;
+  }
+  &__input_text {
+    width: 51.5rem;
+  }
+}
+
+.form {
+  float: left;
+}
+.feedback-description {
+  float: right;
+  width: 360px;
+
+  &__title {
+    margin-bottom: 3rem;
+    @mixin fonts 22, 30, 700;
+  }
+  &__text {
+    margin-bottom: 3rem;
+    color: color($color_tertiary l(- 61%));
+    @mixin fonts 18, 24, 400, $font-family_add;
+  }
+  &__write-us {
+    margin-bottom: 5rem;
+  }
+  .warn-text {
+    @mixin fonts 18, 24, 700, $font-family_add;
+  }
+}
+
 .page-footer {
-  background-color: $color-4;
+  padding-top: 6.5rem;
+  padding-bottom: 9rem;
+  background-color: hsl(249, 35%, 20%);
+  color: $color-text;
+}
+
+.left-bar { float: left; }
+.rigth-bar { float: right; }
+
+
+.logo_bottom {
+  width: 100%;
+  margin-bottom: 8.5rem;
 }

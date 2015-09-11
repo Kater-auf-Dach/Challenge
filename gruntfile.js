@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-              
+
     // jade compile
     jade: {
       compile: {
@@ -27,16 +27,16 @@ module.exports = function(grunt) {
           require('postcss-import'),
           require('postcss-mixins'),
           //require('postcss-simple-extend'),
-          require('postcss-conditionals'),
-          require('postcss-for'),
+          //require('postcss-conditionals'),
+          //require('postcss-for'),
           require('postcss-simple-vars'),
           require('postcss-nested'),
           require('postcss-extend'),
-          require('postcss-calc'),
+          //require('postcss-calc'),
           require("postcss-color-function"),
-          require('postcss-color-hcl'),
+          //require('postcss-color-hcl'),
           require('autoprefixer')({browsers: 'last 2 version'}),
-          //require('cssnano')({convertValues: false}, {autoprefixer: false})
+          require('cssnano')({autoprefixer: false})
         ]
       },
       dist: {
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
            './build/css/styles.css': 'src/styles/*.css'
         }
       }
-        
+
     },
 
     // beatufy

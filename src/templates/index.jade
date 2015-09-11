@@ -13,7 +13,7 @@ block header
 block content
   +b.intro
     .wrapper
-      +e('h1').title Учеба еще никогда не была такой интересной!
+      +e('h1').title.headings Учеба еще никогда не была такой интересной!
       +e('p').text Обучаем готовых к трудоустройству специалистов на теоретических и практических курсах.
       button.btn.btn_request(type= 'submit') Подать заявку
 
@@ -31,42 +31,71 @@ block content
 
   +b.learn-types
     .wrapper
-      +e('h2').title.headings
-      +e('a').more-link Подробнее о программе
-        +table(rowAll)
+      .top-bar
+        +e('h2').title.headings Формы обучения
+        +e('a').more-link Подробнее о программе
+      +table('learn-types__table', rowAll)
 
   +b.feedback
     .wrapper
-      +e('h2').title.headings
+      +e('h2').title.headings Обратная связь
+      
+      .form
+        +b('form').feedback-form(method= 'POST', action='/post')
+          //- +e.item
+          //-   +e('label').label(for= 'name') ФИО
+          //-   +e('input').input(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста')
+          //- 
+          //- +e.item
+          //-   +e('p').label Пол
+          //-   +e('input').input(id= 'male', name= 'sex', type= 'radio', checked)
+          //-   label(for= 'male') Мужской
+          //-   +e('input').input(id= 'female', name= 'sex', type= 'radio')
+          //-   label(for= 'female') Женский
+          //- 
+          //- +e.item
+          //-   +e('label').label(for= 'message') Доп.текст
+          //-   +e('textarea').input(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
+          //- 
+          //- button.btn.btn_send(type= 'submit') Отправить
+          table
+            tr
+              td 
+                +e('label').label(for= 'name') ФИО
+              td
+                +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста') 
+            tr
+              td
+                +e('p').label Пол
+              td
+                +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
+                label(for= 'male') Мужской
+                +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
+                label(for= 'female') Женский       
+            tr
+              td
+                +e('label').label(for= 'message') Доп.текст
+              td
+                +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
+            tr
+              td
+              td
+                button.btn.btn_send(type= 'submit') Отправить        
 
-      +b('form').feedback-form.form(method= 'POST', action='/post')
-        +e.item
-          +e('label').label ФИО
-          +e('input').input(type= 'text', placeholder= 'Представьтесь, пожалуйста')
-
-        +e.item
-          +e('p').label Пол
-          +e('input').input(id= 'male', name= 'sex', type= 'radio', checked)
-          label(for= 'male') Мужской
-          +e('input').input(id= 'female', name= 'sex', type= 'radio')
-          label(for= 'female') Женский
-
-        +e.item
-          +e('label').label Доп.текст
-          +e('textarea').input(placeholder= 'Сообщите о себе все, что считаете нужным')
-
-        button.btn.btn_send(type= 'submit') Отправить
-
-      +b.feedback-howto
-        +e('h3').title Заинтересовались обучением на нашей кафедре?
-        +e('p').text  Заполните короткую форму обратной связи и отправьте нам.
-        +e('p').text Мы подготовим для вас индивидуальное предложение и выйдем на связь!
-        +e('p').text <span class='warn'>Внимание!</span> Все поля обязательны для заполнения.
+      +b.feedback-description
+        +e.write-us
+          +e('h3').title Заинтересовались обучением на нашей кафедре?
+          +e('p').text  Заполните короткую форму обратной связи и отправьте нам.
+          +e('p').text Мы подготовим для вас индивидуальное предложение и выйдем на связь!
+        +e.warn  
+          +e('p').text <span class='warn-text'>Внимание!</span> Все поля обязательны для заполнения.
 
 block footer
   +b('footer').page-footer
     .wrapper
-      +b('a').logo_bottom
-      +e('p').address 197101, г. Санкт-Петербург, пр. Кронверкский, д. 49
-      +b('ul').footer-menu
-        +menu(footerMenu)
+      .left-bar
+        +b('a').logo_bottom
+        +e('p').address 197101, г. Санкт-Петербург, <br> пр. Кронверкский, д. 49
+      .rigth-bar
+        +b('ul').footer-menu
+          +menu(footerMenu)
