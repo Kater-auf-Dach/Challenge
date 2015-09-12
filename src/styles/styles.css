@@ -41,7 +41,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  outline: 1px dotted red;
+  //outline: 1px dotted red;
 }
 
 body {
@@ -62,10 +62,17 @@ body {
 }
 
 .top-section { clear: fix; }
-.left-section { float: left; }
-.rigth-section { float: right; }
+.left-section {
+  float: left;
+  width: 33.33%;
+}
+.rigth-section {
+  max-width: 70rem;
+  margin-left: 33%
+}
 
 .page-header {
+  padding-top: 3.5rem;
   background-color: $color_secondary;
   color: $color-text;
 }
@@ -74,6 +81,7 @@ body {
   float: left;
   width: 182px;
   height: 82px;
+  margin-bottom: 10rem;
   background: url(../img/logotype.png) no-repeat 0% 0%;
 }
 
@@ -130,11 +138,11 @@ body {
   outline: none;
 
   &_request {
-
     margin-bottom: 10.4rem;
   }
   &_send {
     width: 100%;
+    margin-top: 2.5rem;
   }
 }
 
@@ -153,6 +161,7 @@ body {
   }
 
   &__title {
+    min-height: 4.8rem;
     margin-top: 10rem;
     margin-bottom: 3rem;
     @mixin fonts 22, 24, 700;
@@ -206,6 +215,10 @@ body {
   padding-top: 5rem;
   padding-bottom: 7.5rem;
   background-color: $color_tertiary;
+
+  &__title {
+    margin-bottom: 6rem;
+  }
 }
 
 
@@ -220,12 +233,15 @@ body {
   &__label {
     display: table-cell;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: 1.5rem;
     vertical-align: middle;
+    @mixin fonts 18, 24, 700;
   }
   &__label_radio {
     display: inline-block;
-    padding-left: 2rem
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    @mixin fonts 18, 24, 400, $font-family_add;
   }
   &__input {
     display: table-cell;
@@ -237,10 +253,11 @@ body {
     width: 51.5rem;
   }
   &__input_radio {
-    margin: 3rem 0;
+    margin: 3.5rem 0;
     margin-left: 3rem;
   }
-  &__input::placeholder {
+  &__input_text::placeholder {
+    color: hsl(0, 0%, 25%);
     @mixin fonts 18, 24, 400, $font-family_add;
   }
 }
@@ -277,4 +294,39 @@ body {
 .logo_bottom {
   width: 100%;
   margin-bottom: 8.5rem;
+}
+
+.footer-menu {
+  float: right;
+  font-size: 0;
+
+  &__item {
+    display: inline-block;
+    list-style: none;
+    margin-right: 3rem;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  &__link {
+    color: $color-text;
+    @mixin fonts 18, 24, 700;
+  }
+}
+
+
+.submenu {
+  font-size: 0;
+
+  &__item {
+    list-style: none;
+    margin-bottom: 3.5rem;
+    &:first-of-type {
+      margin-top: 4.5rem;
+    }
+  }
+  &__link {
+    color: hsl(249, 20%, 68%);
+    @mixin fonts 18, 24, 700, $font-family_add;
+  }
 }
