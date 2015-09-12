@@ -4,10 +4,9 @@ block header
 
   +b('header').page-header
     .wrapper
-      .top-bar
-        +b('a').logo_top
-        +b('nav').main-menu
-          +menu(mainMenu)
+      +b('a').logo_top
+      +b('nav').main-menu
+        +menu(mainMenu)
 
 
 block content
@@ -31,7 +30,7 @@ block content
 
   +b.learn-types
     .wrapper
-      .top-bar
+      .top-section
         +e('h2').title.headings Формы обучения
         +e('a').more-link Подробнее о программе
       +table('learn-types__table', rowAll)
@@ -39,63 +38,65 @@ block content
   +b.feedback
     .wrapper
       +e('h2').title.headings Обратная связь
-      
-      .form
-        +b('form').feedback-form(method= 'POST', action='/post')
-          //- +e.item
-          //-   +e('label').label(for= 'name') ФИО
-          //-   +e('input').input(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста')
-          //- 
-          //- +e.item
-          //-   +e('p').label Пол
-          //-   +e('input').input(id= 'male', name= 'sex', type= 'radio', checked)
-          //-   label(for= 'male') Мужской
-          //-   +e('input').input(id= 'female', name= 'sex', type= 'radio')
-          //-   label(for= 'female') Женский
-          //- 
-          //- +e.item
-          //-   +e('label').label(for= 'message') Доп.текст
-          //-   +e('textarea').input(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
-          //- 
-          //- button.btn.btn_send(type= 'submit') Отправить
-          table
-            tr
-              td 
-                +e('label').label(for= 'name') ФИО
-              td
-                +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста') 
-            tr
-              td
-                +e('p').label Пол
-              td
-                +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
-                label(for= 'male') Мужской
-                +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
-                label(for= 'female') Женский       
-            tr
-              td
-                +e('label').label(for= 'message') Доп.текст
-              td
-                +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
-            tr
-              td
-              td
-                button.btn.btn_send(type= 'submit') Отправить        
 
       +b.feedback-description
         +e.write-us
           +e('h3').title Заинтересовались обучением на нашей кафедре?
           +e('p').text  Заполните короткую форму обратной связи и отправьте нам.
           +e('p').text Мы подготовим для вас индивидуальное предложение и выйдем на связь!
-        +e.warn  
-          +e('p').text <span class='warn-text'>Внимание!</span> Все поля обязательны для заполнения.
+        +e('p').text <span class='warn-text'>Внимание!</span> Все поля обязательны для заполнения.
+        
+        
+      +b('form').feedback-form(method= 'POST', action='/post')
+          +e.item
+            +e('label').label(for= 'name') ФИО
+            +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста')
+          
+          +e.item._radio
+            +e('p').label Пол
+            +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
+            +e('label').label._radio(for= 'male') Мужской
+            +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
+            +e('label').label._radio(for= 'female') Женский
+          
+          +e.item
+            +e('label').label(for= 'message') Доп.текст
+            +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
+          
+          +e.item
+            +e('label').label(for= 'message')
+            button.btn.btn_send(type= 'submit') Отправить
+          //- table
+          //-   tr
+          //-     td 
+          //-       +e('label').label(for= 'name') ФИО
+          //-     td
+          //-       +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста') 
+          //-   tr
+          //-     td
+          //-       +e('p').label Пол
+          //-     td
+          //-       +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
+          //-       label(for= 'male') Мужской
+          //-       +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
+          //-       label(for= 'female') Женский       
+          //-   tr
+          //-     td
+          //-       +e('label').label(for= 'message') Доп.текст
+          //-     td
+          //-       +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
+          //-   tr
+          //-     td
+          //-     td
+          //-       button.btn.btn_send(type= 'submit') Отправить        
+
 
 block footer
   +b('footer').page-footer
     .wrapper
-      .left-bar
+      .left-section
         +b('a').logo_bottom
         +e('p').address 197101, г. Санкт-Петербург, <br> пр. Кронверкский, д. 49
-      .rigth-bar
+      .rigth-section
         +b('ul').footer-menu
           +menu(footerMenu)

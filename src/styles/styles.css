@@ -30,13 +30,6 @@ $lg: 'min-width: 960px';
 }
 
 
-@define-placeholder clear:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-
 html {
   font-size: $html-font_base;
   box-sizing: border-box;
@@ -48,7 +41,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  //outline: 1px dotted red;
+  outline: 1px dotted red;
 }
 
 body {
@@ -60,7 +53,7 @@ body {
   max-width: 108rem;
   margin: 0 auto;
   padding: 0 3rem;
-  @extend clear;
+  clear: fix;
 }
 
 .link {
@@ -68,7 +61,9 @@ body {
   text-decoration: none;
 }
 
-.top-bar {@extend clear; }
+.top-section { clear: fix; }
+.left-section { float: left; }
+.rigth-section { float: right; }
 
 .page-header {
   background-color: $color_secondary;
@@ -118,13 +113,13 @@ body {
     width: 31rem;
     margin-bottom: 5.3rem;
     @mixin fonts 18, 30, 400, $font-family_add;
-    color: hsl(249, 70%, 83%);
+    color: color($color_secondary s(+ 11%) l(+ 25%));
    }
 }
 
 .btn {
   text-transform: uppercase;
-  background-color: hsl(257, 54%, 30%);
+  background-color: color($color_secondary h(+ 8) s(- 7%) l(- 26%));
   padding: 2.5rem 8rem;
   color: $color_base;
   font-size: 20px;
@@ -139,7 +134,7 @@ body {
     margin-bottom: 10.4rem;
   }
   &_send {
-
+    width: 100%;
   }
 }
 
@@ -153,7 +148,7 @@ body {
     padding: 0 1.5rem;
     float: left;
     text-align: center;
-    background: $color_tertiary url(../img/icon1.svg) no-repeat 50% top;
+    background: $color_tertiary url(../img/icon1.svg) no-repeat 50% 0%in;
 
   }
 
@@ -215,21 +210,44 @@ body {
 
 
 .feedback-form {
+  margin-right: 31%;
+  &__item {
+    display: table-row;
+  }
+  &__item_radio {
+    padding: 3rem 0;
+  }
+  &__label {
+    display: table-cell;
+    text-align: right;
+    padding-right: 1rem;
+    vertical-align: middle;
+  }
+  &__label_radio {
+    display: inline-block;
+    padding-left: 2rem
+  }
   &__input {
+    display: table-cell;
     padding: 1.8rem 2.8rem;
+    line-height: 3rem;
     @mixin border;
   }
   &__input_text {
     width: 51.5rem;
   }
+  &__input_radio {
+    margin: 3rem 0;
+    margin-left: 3rem;
+  }
+  &__input::placeholder {
+    @mixin fonts 18, 24, 400, $font-family_add;
+  }
 }
 
-.form {
-  float: left;
-}
 .feedback-description {
   float: right;
-  width: 360px;
+  width: 30%;
 
   &__title {
     margin-bottom: 3rem;
@@ -243,21 +261,18 @@ body {
   &__write-us {
     margin-bottom: 5rem;
   }
-  .warn-text {
+}
+
+.warn-text {
     @mixin fonts 18, 24, 700, $font-family_add;
-  }
 }
 
 .page-footer {
   padding-top: 6.5rem;
   padding-bottom: 9rem;
-  background-color: hsl(249, 35%, 20%);
+  background-color: color($color_secondary s(- 26%) l(- 38%));
   color: $color-text;
 }
-
-.left-bar { float: left; }
-.rigth-bar { float: right; }
-
 
 .logo_bottom {
   width: 100%;

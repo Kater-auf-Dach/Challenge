@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 
+  require('time-grunt')(grunt),
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
@@ -23,20 +24,24 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         processors: [
-          require('postcss-size'),
-          require('postcss-import'),
-          require('postcss-mixins'),
+          //require('postcss-size'),
+          //require('postcss-import'),
+          //require('postcss-for'),
           //require('postcss-simple-extend'),
           //require('postcss-conditionals'),
-          //require('postcss-for'),
+          //require('postcss-calc'),
+          //require('postcss-color-hcl'),
+          //require('cssgrace'),
+          require('postcss-mixins'),
           require('postcss-simple-vars'),
           require('postcss-nested'),
           require('postcss-extend'),
-          //require('postcss-calc'),
+          require('postcss-clearfix'),
           require("postcss-color-function"),
-          //require('postcss-color-hcl'),
           require('autoprefixer')({browsers: 'last 2 version'}),
-          require('cssnano')({autoprefixer: false})
+          require('cssnano')({autoprefixer: false}),
+          require('pixrem')({html: false}),
+          require('postcss-round-subpixels')
         ]
       },
       dist: {
@@ -47,39 +52,39 @@ module.exports = function(grunt) {
 
     },
 
-    // beatufy
-    csscomb: {
-      dist: {
-        options: {
-          config: 'csscomb.json'
-        },
-        files: {
-          'build/css/styles.css': ['build/css/styles.css']
-        }
-      }
-    },
-
-    //js compile
-    uglify: {
-      start: {
-        files: {
-          'build/js/scripts.min.js': ['build/js/scripts.js']
-        }
-      }
-    },
-
-    // images
-    // imagemin: {
-    //   build: {
+    // // beatufy
+    // csscomb: {
+    //   dist: {
     //     options: {
-    //       optimizationLevel: 3
+    //       config: 'csscomb.json'
     //     },
-    //     files: [{
-    //       expand: true,
-    //       src: ['build/img/*.{png,jpg,gif,svg}']
-    //     }]
+    //     files: {
+    //       'build/css/styles.css': ['build/css/styles.css']
+    //     }
     //   }
     // },
+    //
+    // //js compile
+    // uglify: {
+    //   start: {
+    //     files: {
+    //       'build/js/scripts.min.js': ['build/js/scripts.js']
+    //     }
+    //   }
+    // },
+
+    //images
+    imagemin: {
+      build: {
+        options: {
+          optimizationLevel: 3
+        },
+        files: [{
+          expand: true,
+          src: ['build/img/*.{png,jpg,gif,svg}']
+        }]
+      }
+    },
 
     // delete production folder
     clean: {
@@ -166,8 +171,8 @@ module.exports = function(grunt) {
    grunt.registerTask('default', [
      'jade',
      'postcss',
-     'copy:js',
-     'uglify',
+     //'copy:js',
+     //'uglify',
      'copy:img',
      'copy:fonts',
      //'imagemin',
@@ -183,8 +188,8 @@ module.exports = function(grunt) {
      'uglify',
      //'copy:html',
      'copy:img',
-     'copy:fonts'
-     //'imagemin',
+     'copy:fonts',
+     'imagemin',
    ]);
 
    // js only
