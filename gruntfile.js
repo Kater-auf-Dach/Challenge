@@ -24,14 +24,7 @@ module.exports = function(grunt) {
     postcss: {
       options: {
         processors: [
-          //require('postcss-size'),
-          //require('postcss-import'),
-          //require('postcss-for'),
-          //require('postcss-simple-extend'),
-          //require('postcss-conditionals'),
-          //require('postcss-calc'),
-          //require('postcss-color-hcl'),
-          //require('cssgrace'),
+          require('postcss-import')({path: ['src/styles']}),
           require('postcss-mixins'),
           require('postcss-simple-vars'),
           require('postcss-nested'),
@@ -40,30 +33,17 @@ module.exports = function(grunt) {
           require("postcss-color-function"),
           require('autoprefixer')({browsers: 'last 2 version'}),
           require('cssnano')({autoprefixer: false}),
-          require('pixrem')({html: false}),
-          require('postcss-round-subpixels')
+          require('pixrem')({html: false})
         ]
       },
       dist: {
         files: {
-           './build/css/styles.css': 'src/styles/*.css'
+           './build/css/main.css': 'src/styles/main.css'
         }
       }
 
     },
 
-    // // beatufy
-    // csscomb: {
-    //   dist: {
-    //     options: {
-    //       config: 'csscomb.json'
-    //     },
-    //     files: {
-    //       'build/css/styles.css': ['build/css/styles.css']
-    //     }
-    //   }
-    // },
-    //
     // //js compile
     // uglify: {
     //   start: {
@@ -186,7 +166,6 @@ module.exports = function(grunt) {
      'jade',
      'postcss',
      'uglify',
-     //'copy:html',
      'copy:img',
      'copy:fonts',
      'imagemin',
@@ -201,7 +180,7 @@ module.exports = function(grunt) {
    // css & images only
    grunt.registerTask('img', [
      'copy:img',
-      //'imagemin',
+     'imagemin',
      'postcss'
    ]);
 
