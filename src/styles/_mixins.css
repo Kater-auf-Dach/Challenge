@@ -1,0 +1,12 @@
+@define-mixin fonts $fontSize, $lineHeight, $fontWeight: normal, $fontFamily: $font-family {
+  font-size: calc($fontSize / 10rem);
+  line-height: calc($lineHeight / $fontSize);
+  font-weight: $fontWeight;
+  font-family: $fontFamily;
+}
+
+@define-mixin border $b-width: 2px, $b-style: solid, $b-color: color($color_base l(- 35%)) {
+  border-width: $b-width;
+  border-style: $b-style;
+  border-color: $b-color;
+}

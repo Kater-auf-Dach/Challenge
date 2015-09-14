@@ -1,13 +1,15 @@
 extends _layout
 
-block header
+block title
+  - var pageTitle = 'Программа обучения';
+  title #{pageTitle}
 
+block header
   +b('header').page-header
     .wrapper
       +b('a').logo_top
       +b('nav').main-menu
         +menu(mainMenu)
-
 
 block content
   +b.intro
@@ -66,30 +68,7 @@ block content
           +e.item
             +e('label').label(for= 'message')
             button.btn.btn_send(type= 'submit') Отправить
-          //- table
-          //-   tr
-          //-     td 
-          //-       +e('label').label(for= 'name') ФИО
-          //-     td
-          //-       +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста') 
-          //-   tr
-          //-     td
-          //-       +e('p').label Пол
-          //-     td
-          //-       +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
-          //-       label(for= 'male') Мужской
-          //-       +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
-          //-       label(for= 'female') Женский       
-          //-   tr
-          //-     td
-          //-       +e('label').label(for= 'message') Доп.текст
-          //-     td
-          //-       +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
-          //-   tr
-          //-     td
-          //-     td
-          //-       button.btn.btn_send(type= 'submit') Отправить        
-
+    
 
 block footer
   +b('footer').page-footer
