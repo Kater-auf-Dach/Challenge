@@ -47,13 +47,13 @@ module.exports = function(grunt) {
     },
 
     // //js compile
-    // uglify: {
-    //   start: {
-    //     files: {
-    //       'build/js/scripts.min.js': ['build/js/scripts.js']
-    //     }
-    //   }
-    // },
+    uglify: {
+      start: {
+        files: {
+          'build/js/scripts.min.js': ['build/js/script.js']
+        }
+      }
+    },
 
     //images
     imagemin: {
@@ -153,8 +153,8 @@ module.exports = function(grunt) {
    grunt.registerTask('default', [
      'jade',
      'postcss',
-     //'copy:js',
-     //'uglify',
+     'copy:js',
+     'uglify',
      'copy:img',
      'copy:fonts',
      //'imagemin',

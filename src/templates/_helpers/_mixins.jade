@@ -24,10 +24,21 @@ mixin list(items)
         +b('ul').submenu
           each subitem in item.sub
             +e('li').item: +e('a').link.link(href= subitem.url)= subitem.name
+            
+mixin navList(items)
+  each item in items
+    if item.name === pageTitle
+      +e('a').link.link.link_active(href= item.url)= item.name
+    else
+      +e('a').link.link(href= item.url)= item.name
+                      
 mixin menu(menuItems)
   each item in menuItems
     +list(item)
 
+mixin nav(menuItems)
+  each item in menuItems
+    +navList(item)
 
 //- mixin menu(prefix)
 //-   nav(class= prefix + 'menu')

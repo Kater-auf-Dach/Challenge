@@ -154,8 +154,10 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     @mixin fonts 18, 24, 700;
-    /*background-color: $color-btn;*/
     color: $color-text;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    /*background-color: $color-btn;*/
   }
   @media screen and (width < $sm) {margin-top: 0;}
 }
@@ -170,9 +172,9 @@ body {
     top: 100%;
     right: 0;
     width: 50%;
-    /*margin-right: 3rem;*/
     background: $color-btn;
     display: none;
+    /*margin-right: 3rem;*/
   }
   @media screen and (width < $md_pre) {
     left: 0;
@@ -180,40 +182,39 @@ body {
     width: 100%;
   }
 
-  &__item {
+  &__link {
     display: inline-block;
-    vertical-align: top;
-    list-style-type: none;
-    @mixin fonts 18, 24, 700;
     padding: 0 3rem;
-    &:last-of-type {padding-right: 0;}
+    vertical-align: top;
+    color: $color_base;
+    @mixin fonts 18, 24, 700;
 
     @media screen and (width < $lg) {
       display: block;
       width: 100%;
+      padding: 2rem;
       text-align: right;
-      padding: 0;
+      background-color: $color-btn;
+      border-top: 1px solid color($color-btn l(+ 10%));
+      border-bottom: 2px solid color($color-btn l(- 3%));
     }
     @media screen and (width < $md_pre) {
       text-align: center;
       text-transform: uppercase;
     }
-  }
-  &__link {
-    color: $color_base;
 
-    @media screen and (width < $lg) {
-      width: 100%;
-      padding: 2rem;
-      background-color: $color-btn;
-      border-top: 1px solid color($color-btn l(+ 10%));
-      border-bottom: 2px solid color($color-btn l(- 3%));
+    &:last-of-type {
+      padding-right: 0;
+      @media screen and (width < $lg) {
+        padding: 2rem;
+      }
     }
   }
   &__link:hover {
     @media screen and (width < $lg) {background-color: color($color-btn l(- 3%))}
   }
 }
+.menu-show {display: block;}
 
 .intro {
   padding-top: 11rem;
@@ -412,6 +413,7 @@ body {
     padding: 1.8rem 2.8rem;
     line-height: 3rem;
     @mixin border;
+    border-radius: 2px;
     outline: none;
 
     &:hover {border-color: color($color-border l(- 20%));}

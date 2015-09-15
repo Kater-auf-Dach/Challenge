@@ -1,7 +1,7 @@
 extends _layout
 
 block title
-  - var pageTitle = '';
+  - var pageTitle = 'Title';
   title #{pageTitle}
 
 block header
@@ -10,7 +10,7 @@ block header
       +b('a').logo_top(href='#')
       +b('a').touch-menu(href='#') Меню
       +b('nav').main-menu
-        +menu(mainMenu)
+        +nav(mainMenu)
 
 block content
   +b.intro
