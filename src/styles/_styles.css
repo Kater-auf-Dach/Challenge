@@ -1,6 +1,7 @@
 html {
   font-size: $html-font_base;
   box-sizing: border-box;
+  @media screen and (width < $md_pre) {font-size: 50%;}
 }
 
 *,
@@ -9,7 +10,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  outline: 1px dotted red;
+  //outline: 1px dotted red;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
 }
 
 .wrapper {
+  min-width: 32rem;
   max-width: 108rem;
   margin: 0 auto;
   padding: 0 3rem;
@@ -30,29 +32,60 @@ body {
 
 .left-section {
   float: left;
-  width: 33.33%;
+  min-width: 182px;
+  @media screen and (width < $lg) {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
 }
 .rigth-section {
-  max-width: 70rem;
-  margin-left: 33%
+  float: right;
+  @media screen and (width < $lg) {display: none;}
 }
 
 .link {
-  display: block;
+  display: inline-block;
   text-decoration: none;
+  padding-bottom: 10px;
+  @media screen and (width < $lg) {padding-bottom: 2rem;}
+  &:after {
+    content: '';
+    display: none;
+    width: 100%;
+    height: 2px;
+    background-color: $color_base;
+  }
+  &:hover {
+    color: $color-text;
+    padding-bottom: 8px;
+    @media screen and (width < $lg) {padding-bottom: 2rem;}
+  }
+  &:hover:after {
+    display: block;
+    @media screen and (width < $lg) {display: none;}
+  }
+  &:active:after {display: none;}
+  &:active {opacity: .3}
 }
 
 .btn {
   text-transform: uppercase;
-  background-color: color($color_secondary h(+ 8) s(- 7%) l(- 26%));
   padding: 2.5rem 8rem;
   color: $color_base;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
+  background-color: $color-btn;
+  @mixin fonts 20, 24. 700;
   text-align: center;
   border-width: 0;
   outline: none;
+
+  &:hover {
+    background-color: color($color-btn l(- 3%));
+  }
+  &:active {
+    background-color: color($color-btn l(- 3%));
+    color: color($color_base a(.3));
+  }
 
   &_request {
     margin-bottom: 10.4rem;
@@ -67,43 +100,132 @@ body {
   @mixin fonts 45, 50, 700;
 }
 
+.logo {
+  display: block;
+  width: 182px;
+  height: 82px;
+  background: url('../img/logotype.png') no-repeat 0% 0%;
+  background-size: cover;
+
+  &_top {
+    float: left;
+    @media screen and (width < $md) {
+      width: calc(182px / 1.5);
+      height: calc(82px / 1.5);
+    }
+    @media screen and (width < $sm) {
+      width: calc(182px / 2);
+      height: calc(82px / 2);
+    }
+  }
+
+  &_bottom {
+    margin-bottom: 8.5rem;
+    @media screen and (width < $lg) {margin: 0 auto 6rem;}
+  }
+}
+
 .page-header {
   padding-top: 3.5rem;
   background-color: $color_secondary;
   color: $color-text;
+
+  @media screen and (width < $lg) {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  @media screen and (width < $md_pre) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
 }
 
-.logo {
-  float: left;
-  width: 182px;
-  height: 82px;
-  margin-bottom: 10rem;
-  background: url(../img/logotype.png) no-repeat 0% 0%;
+.touch-menu {
+  display: none;
+
+  @media screen and (width < $lg) {
+    display: block;
+    float: right;
+    margin-top: 1.2rem;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    @mixin fonts 18, 24, 700;
+    /*background-color: $color-btn;*/
+    color: $color-text;
+  }
+  @media screen and (width < $sm) {margin-top: 0;}
 }
 
 .main-menu {
-  margin-left: 2rem;
   float: right;
   font-size: 0;
-  text-align: right;
+
+  @media screen and (width < $lg) {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    right: 0;
+    width: 50%;
+    /*margin-right: 3rem;*/
+    background: $color-btn;
+    display: none;
+  }
+  @media screen and (width < $md_pre) {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
 
   &__item {
     display: inline-block;
     vertical-align: top;
     list-style-type: none;
     @mixin fonts 18, 24, 700;
-  }
-
-  &__link {
-    float: right;
     padding: 0 3rem;
+    &:last-of-type {padding-right: 0;}
+
+    @media screen and (width < $lg) {
+      display: block;
+      width: 100%;
+      text-align: right;
+      padding: 0;
+    }
+    @media screen and (width < $md_pre) {
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &__link {
     color: $color_base;
+
+    @media screen and (width < $lg) {
+      width: 100%;
+      padding: 2rem;
+      background-color: $color-btn;
+      border-top: 1px solid color($color-btn l(+ 10%));
+      border-bottom: 2px solid color($color-btn l(- 3%));
+    }
+  }
+  &__link:hover {
+    @media screen and (width < $lg) {background-color: color($color-btn l(- 3%))}
   }
 }
 
 .intro {
-  background: $color_secondary url('../img/intro.png') no-repeat 80% 50%;
+  padding-top: 11rem;
+  background: $color_secondary;
   text-align: left;
+
+  @media screen and ($sm < width < $md_pre) {
+    padding-top: 14rem;
+  }
+  @media screen and ($md_pre < width < $lg) {
+    padding-top: 4rem;
+  }
 
   &__title {
     width: 43rem;
@@ -116,7 +238,13 @@ body {
     margin-bottom: 5.3rem;
     @mixin fonts 18, 30, 400, $font-family_add;
     color: color($color_secondary s(+ 11%) l(+ 25%));
-   }
+  }
+  .wrapper {
+    background: $color_secondary url('../img/intro.png') no-repeat 100% 0%;
+    @media screen and (width < $lg) {
+      background-image: none;
+    }
+  }
 }
 
 .features {
@@ -129,8 +257,27 @@ body {
     padding: 0 1.5rem;
     float: left;
     text-align: center;
-    background: $color_tertiary url(../img/icon1.svg) no-repeat 50% 0%in;
-
+    @media screen and (width < $md) {
+      width: 100%;
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+      border-bottom: 2px solid $color-border;
+    }
+    &:last-of-type {
+      @media screen and (width < $md) {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__item_learn {
+    background: $color_tertiary url('../img/icon__features_learn.svg') no-repeat 50% 0%;
+  }
+  &__item_practice {
+    background: $color_tertiary url('../img/icon__features_practice.svg') no-repeat 50% 0%;
+  }
+  &__item_job {
+    background: $color_tertiary url('../img/icon__features_job.svg') no-repeat 50% 0%;
   }
 
   &__title {
@@ -154,33 +301,85 @@ body {
   &__title {
     float: left;
     margin-bottom: 5rem;
+    @media screen and (width < $md_pre) {
+      float: none;
+      margin-bottom: 2rem;
+    }
   }
 
   &__more-link {
     float: right;
     margin-top: 1rem; /* (h title - h link) / 2 */
     text-decoration: underline;
-    color: color($color_secondary s(- 16%) l(- 26%));
+    color: $color-link;
     @mixin fonts 18, 30, 400, $font-family_add;
+
+    &:hover {color: color($color-link s(+ 1%) l(- 3%));}
+    &:active {color: color($color-link a(.3));}
+
+    @media screen and (width < $md_pre) {
+      float: none;
+      display: block;
+      margin-bottom: 3rem;
+    }
   }
 }
 
 .learn-types__table {
   width: 100%;
-  border-top: 3px solid color($color_base l(- 35%));
+  @mixin border 3px;
   border-collapse: collapse;
+
+  @media screen and (width < $sm) {display: block;}
+
+  tbody {
+    @media screen and (width < $sm) {display: block;}
+  }
+
+  .table__row {
+    @media screen and (width < $sm) {
+      display: flex;
+      flex-wrap: wrap;
+      //justify-content: space-between;
+    }
+  }
 
   .table__heading {
     background-color: $color_tertiary;
     color: color($color_tertiary l(- 69%));
     @mixin fonts 18, 30, 400, $font-family_add;
     @mixin border;
-    padding: 3rem 3rem;
+    padding: 3rem;
+
+    @media screen and (width < $md_pre) {
+      padding: 2rem;
+    }
+    @media screen and (width < $sm) {
+      display: none;
+      border: none;
+    }
   }
   .table__data {
     @mixin border;
-    padding: 3rem 3rem;
+    padding: 3rem;
+
+    @media screen and (width < $md_pre) {
+      padding: 2rem;
+    }
+    @media screen and (width < $sm) {
+      display: block;
+      border: none;
+    }
   }
+  .table__data_last {
+    @media screen and (width < $sm) {
+      order: -1;
+      width: 100%;
+      background-color: $color_tertiary;
+    }
+  }
+
+
 }
 
 
@@ -196,13 +395,38 @@ body {
 
 
 .feedback-form {
-  margin-right: 31%;
+  margin-right: 33%;
+  @media screen and (width < $md_pre) {margin-right: 0;}
+
   &__item {
     display: table-row;
-    min-width: 100%;
+    @media screen and (width < $md_pre) {display: block;}
   }
   &__item_radio {
     padding: 3rem 0;
+    @media screen and (width < $md_pre) {padding: 0;}
+  }
+
+  &__input {
+    display: inline-block;
+    padding: 1.8rem 2.8rem;
+    line-height: 3rem;
+    @mixin border;
+    outline: none;
+
+    &:hover {border-color: color($color-border l(- 20%));}
+    &:focus {border-color: hsl(256, 62%, 54%);}
+  }
+  &__input_text {
+    width: 51.5rem;
+    @media screen and (width < $lg) {width: 100%;}
+  }
+  &__input_text::placeholder {
+    color: hsl(0, 0%, 25%);
+    @mixin fonts 18, 24, 400, $font-family_add;
+  }
+  &__input_radio {
+    display: none;
   }
   &__label {
     display: table-cell;
@@ -210,30 +434,57 @@ body {
     padding-right: 1.5rem;
     vertical-align: middle;
     @mixin fonts 18, 24, 700;
+
+    @media screen and (width < $md_pre) {
+      display: block;
+      margin: 3rem 0;
+      text-align: left;
+      text-transform: uppercase;
+    }
   }
+}
+.feedback-form {
   &__label_radio {
     display: inline-block;
-    margin-bottom: 0.5rem;
-    padding-left: 2rem;
+    position: relative;
+    padding-left: 5rem;
+    margin: 3rem 5rem 3rem 1.5rem;
     @mixin fonts 18, 24, 400, $font-family_add;
+    cursor: pointer;
+    @media screen and (width < 460px) {display: block;}
   }
-  &__input {
-    display: inline-block;
-    padding: 1.8rem 2.8rem;
-    line-height: 3rem;
-    @mixin border;
+  &__label_radio:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: color($color-border l(+ 15%));
   }
-  &__input_text {
-    width: 51.5rem;
-    width: 100%;
+  &__label_radio:hover:before {
+    background-color: color($color-border l(+ 7%));
   }
-  &__input_radio {
-    margin: 3.5rem 0;
-    margin-left: 3rem;
+  &__label_radio:active:before {
+    background-color: color($color-border l(+ 20%));
   }
-  &__input_text::placeholder {
-    color: hsl(0, 0%, 25%);
-    @mixin fonts 18, 24, 400, $font-family_add;
+  &__input_radio:checked + label:after{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $color-btn;
+  }
+  &__input_radio:checked + label:active:after {
+    background-color:  color($color-btn a(.3));
   }
 }
 
@@ -249,8 +500,16 @@ body {
     margin-bottom: 3rem;
     color: color($color_tertiary l(- 61%));
     @mixin fonts 18, 24, 400, $font-family_add;
+    @media screen and (width < $lg) {margin-bottom: 1rem;}
   }
   &__write-us {
+    margin-bottom: 5rem;
+    @media screen and (width < $lg) {margin-bottom: 3rem;}
+  }
+
+  @media screen and (width < $lg) {
+    float: none;
+    width: 100%;
     margin-bottom: 5rem;
   }
 }
@@ -264,11 +523,6 @@ body {
   padding-bottom: 9rem;
   background-color: color($color_secondary s(- 26%) l(- 38%));
   color: $color-text;
-}
-
-.logo_bottom {
-  width: 100%;
-  margin-bottom: 8.5rem;
 }
 
 .footer-menu {

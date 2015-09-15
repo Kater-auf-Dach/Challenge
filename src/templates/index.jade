@@ -1,13 +1,14 @@
 extends _layout
 
 block title
-  - var pageTitle = 'Программа обучения';
+  - var pageTitle = '';
   title #{pageTitle}
 
 block header
   +b('header').page-header
     .wrapper
-      +b('a').logo_top
+      +b('a').logo_top(href='#')
+      +b('a').touch-menu(href='#') Меню
       +b('nav').main-menu
         +menu(mainMenu)
 
@@ -34,9 +35,8 @@ block content
     .wrapper
       .top-section
         +e('h2').title.headings Формы обучения
-        +e('a').more-link Подробнее о программе
+        +e('a').more-link(href='#') Подробнее о программе
       +table('learn-types__table', rowAll)
-
   +b.feedback
     .wrapper
       +e('h2').title.headings Обратная связь
@@ -52,7 +52,7 @@ block content
       +b('form').feedback-form(method= 'POST', action='/post')
           +e.item
             +e('label').label(for= 'name') ФИО:
-            +e('input').input._text(id= 'name', type= 'text', placeholder= 'Представьтесь, пожалуйста')
+            +e('input').input._text(id= 'name', type= 'text', required, placeholder= 'Представьтесь, пожалуйста', autofill= 'name')
           
           +e.item._radio
             +e('p').label Пол:
@@ -63,7 +63,7 @@ block content
           
           +e.item
             +e('label').label(for= 'message') Доп. текст:
-            +e('textarea').input._text(id= 'message', placeholder= 'Сообщите о себе все, что считаете нужным')
+            +e('textarea').input._text(id= 'message', required, placeholder= 'Сообщите о себе все, что считаете нужным')
           
           +e.item
             +e('label').label(for= 'message')

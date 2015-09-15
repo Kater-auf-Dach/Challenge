@@ -2,8 +2,7 @@
   "name": "chal",
   "version": "1.0.0",
   "description": "",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.0.1",
     "cssnano": "^3.0.0",
@@ -23,10 +22,12 @@
     "postcss-color-function": "^2.0.0",
     "postcss-extend": "^1.0.0",
     "postcss-import": "^7.0.0",
+    "postcss-media-minmax": "^2.1.0",
     "postcss-mixins": "^1.0.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-extend": "^1.0.0",
     "postcss-simple-vars": "^1.0.0",
+    "postcss-sprites": "^2.0.0",
     "time-grunt": "^1.2.1"
   }
 }

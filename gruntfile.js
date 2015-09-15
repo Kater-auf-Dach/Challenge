@@ -10,9 +10,9 @@ module.exports = function(grunt) {
       compile: {
         options: {
           data: {
-            debug: false
+            debug: true
           },
-          pretty: true
+          //pretty: true
         },
         files: {
           "build/index.html": ['src/templates/*.jade', '!src/templates/_*.jade']
@@ -29,6 +29,8 @@ module.exports = function(grunt) {
           require('postcss-simple-vars'),
           require('postcss-nested'),
           require('postcss-extend'),
+          require('postcss-media-minmax'),
+          //require('postcss-sprites'),
           require('postcss-clearfix'),
           require("postcss-color-function"),
           require('autoprefixer')({browsers: 'last 2 version'}),

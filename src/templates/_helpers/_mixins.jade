@@ -5,7 +5,8 @@ mixin row(items)
       if items.index
         th.table__heading= item.content
       else
-        td.table__data= item.content
+        td.table__data(class= item.class)= item.content
+        
 mixin table(tableClass, tableData)
   table(class= tableClass)
     each item in tableData

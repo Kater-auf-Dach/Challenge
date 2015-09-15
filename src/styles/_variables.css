@@ -2,14 +2,17 @@ $color_base: hsl(0, 0%, 100%);
 $color_secondary: hsl(249, 61%, 58%);
 $color_tertiary: color($color_base l(- 6%));
 
+$color-link: hsl(249, 45%, 32%);
+$color-btn: hsl(257, 54%, 30%);
+$color-border: hsl(0, 0%, 70%);
+
 $color-text: hsl(0, 0%, 100%);
 
 $html-font_base: 62.5%;
 $font-family: 'Trebuchet MS', 'Fira Sans', Arial, sans-serif;
 $font-family_add: 'Tahoma', 'Fira Sans', Arial, sans-serif;
 
-$sm: 'min-width: 480px';
-$md: 'min-width: 768px';
-$lg: 'min-width: 960px';
-
-/*$border: 2px solid color($color_base l(- 35%));*/
+$sm: 480px;
+$md_pre: 670px;
+$md: 768px;
+$lg: 960px;
