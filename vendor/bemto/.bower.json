@@ -1,0 +1,15 @@
+{
+  "name": "bemto",
+  "homepage": "https://github.com/kizu/bemto",
+  "version": "0.2.2",
+  "_release": "0.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.2",
+    "commit": "c657ef223ce31996a259e9d68d9e2c95ad6909e6"
+  },
+  "_source": "git://github.com/kizu/bemto.git",
+  "_target": "~0.2.2",
+  "_originalSource": "bemto",
+  "_direct": true
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Challenge",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Kater-auf-Dach/Challenge",
+  "authors": [
+    "Kater-auf-Dach <kateraufdach@yandex.ru>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bemto": "~0.2.2"
+  }
+}
