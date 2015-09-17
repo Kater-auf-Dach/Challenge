@@ -10,7 +10,6 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  //outline: 1px dotted red;
 }
 
 body {
@@ -39,6 +38,7 @@ body {
     text-align: center;
   }
 }
+
 .rigth-section {
   float: right;
   @media screen and (width < $lg) {display: none;}
@@ -162,6 +162,7 @@ body {
   @media screen and (width < $sm) {margin-top: 0;}
 }
 
+
 .main-menu {
   float: right;
   font-size: 0;
@@ -194,9 +195,9 @@ body {
       width: 100%;
       padding: 2rem;
       text-align: right;
-      background-color: $color-btn;
-      border-top: 1px solid color($color-btn l(+ 10%));
-      border-bottom: 2px solid color($color-btn l(- 3%));
+      background-color: $color_secondary;
+      border-top: 1px solid color($color_secondary l(+ 10%));
+      border-bottom: 2px solid color($color_secondary l(- 3%));
     }
     @media screen and (width < $md_pre) {
       text-align: center;
@@ -211,9 +212,10 @@ body {
     }
   }
   &__link:hover {
-    @media screen and (width < $lg) {background-color: color($color-btn l(- 3%))}
+    @media screen and (width < $lg) {background-color: color($color_secondary l(- 3%))}
   }
 }
+
 .menu-show {display: block;}
 
 .intro {
@@ -272,13 +274,13 @@ body {
     }
   }
   &__item_learn {
-    background: $color_tertiary url('../img/icon__features_learn.svg') no-repeat 50% 0%;
+    background: $color_tertiary url('../img/icon__features_learn.png') no-repeat 50% 0%;
   }
   &__item_practice {
-    background: $color_tertiary url('../img/icon__features_practice.svg') no-repeat 50% 0%;
+    background: $color_tertiary url('../img/icon__features_practice.png') no-repeat 50% 0%;
   }
   &__item_job {
-    background: $color_tertiary url('../img/icon__features_job.svg') no-repeat 50% 0%;
+    background: $color_tertiary url('../img/icon__features_job.png') no-repeat 50% 0%;
   }
 
   &__title {
@@ -292,7 +294,6 @@ body {
     @mixin fonts 18, 24, 400, $font-family_add;
   }
 }
-
 
 .learn-types {
   background-color: $color_base;
@@ -383,7 +384,6 @@ body {
 
 }
 
-
 .feedback {
   padding-top: 5rem;
   padding-bottom: 7.5rem;
@@ -393,7 +393,6 @@ body {
     margin-bottom: 6rem;
   }
 }
-
 
 .feedback-form {
   margin-right: 33%;
@@ -445,6 +444,7 @@ body {
     }
   }
 }
+
 .feedback-form {
   &__label_radio {
     display: inline-block;
@@ -545,7 +545,6 @@ body {
   }
 }
 
-
 .submenu {
   font-size: 0;
 
@@ -559,5 +558,26 @@ body {
   &__link {
     color: hsl(249, 20%, 68%);
     @mixin fonts 18, 24, 700, $font-family_add;
+  }
+}
+
+/* IE 8 & IE9 styles */
+
+.ie8 {
+  & .wrapper {min-width: 960px;}
+  & header {display: block;}
+  & footer {display: block;}
+  & nav {display: block;}
+
+  & .feedback-form__input_radio {display: inline-block;}
+  & .feedback-form__label_radio {display: inline-block;}
+  & .feedback-form__label_radio:before {display: none;}
+  & .feedback-form__label_radio:after {display: none;}
+}
+
+.ie9 {
+  & .feedback-form__input_radio:checked + label:after {
+    top: 12px;
+    @media screen and (width < $md_pre) {top: 10px;}
   }
 }

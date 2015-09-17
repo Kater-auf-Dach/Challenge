@@ -30,10 +30,9 @@ module.exports = function(grunt) {
           require('postcss-nested'),
           require('postcss-extend'),
           require('postcss-media-minmax'),
-          //require('postcss-sprites'),
           require('postcss-clearfix'),
           require("postcss-color-function"),
-          require('autoprefixer')({browsers: 'last 2 version'}),
+          require('autoprefixer')({browsers: ['last 2 version', 'IE 8', 'IE 9']}),
           require('cssnano')({autoprefixer: false}),
           require('pixrem')({html: false})
         ]
@@ -46,11 +45,11 @@ module.exports = function(grunt) {
 
     },
 
-    // //js compile
+    // js
     uglify: {
       start: {
         files: {
-          'build/js/scripts.min.js': ['build/js/script.js']
+          'build/js/scripts.min.js': ['src/js/scripts.js']
         }
       }
     },
@@ -126,7 +125,7 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src : [
-            'build/css/styles.css',
+            'build/css/main.css',
             'build/js/*.js',
             'build/img/*.{png,jpg,gif,svg}',
             'build/*.html'
@@ -154,7 +153,7 @@ module.exports = function(grunt) {
      'jade',
      'postcss',
      'copy:js',
-     'uglify',
+     //'uglify',
      'copy:img',
      'copy:fonts',
      //'imagemin',
@@ -167,6 +166,7 @@ module.exports = function(grunt) {
      'clean:build',
      'jade',
      'postcss',
+     'copy:js',
      'uglify',
      'copy:img',
      'copy:fonts',
@@ -175,8 +175,8 @@ module.exports = function(grunt) {
 
    // js only
    grunt.registerTask('js', [
-     'uglify',
-     'copy:js'
+     'copy:js',
+     //'uglify',
    ]);
 
    // css & images only

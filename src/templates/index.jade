@@ -8,8 +8,8 @@ block header
   +b('header').page-header
     .wrapper
       +b('a').logo_top(href='#')
-      +b('a').touch-menu(href='#') Меню
-      +b('nav').main-menu
+      +b('a').touch-menu(href='#', id='touch-menu') Меню
+      +b('nav').main-menu(id='nav')
         +nav(mainMenu)
 
 block content

@@ -1,11 +1,9 @@
-.settings/
 .idea/
-prepros.cfg
 _psd/
 build/
 node_modules/
-gulpfile.js
 npm-debug.log
 csscomb.json
+gulpfile.js
 package-gulp.json
 unuse-packages.json

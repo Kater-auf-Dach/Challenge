@@ -6,9 +6,16 @@ doctype html
 html(lang= "ru")
   head
     include _components/_head
+    <!--[if lte IE 8]>
+    <html lang="en" class="ie8">
+    <script>document.createElement('header'); document.createElement('footer'); document.createElement('nav');</script>
+    <![endif]-->
+    <!--[if IE 9]>
+    <html lang="en" class="ie9">
+    <![endif]-->
 
   body
     block header     
     block content
     block footer
-    script(src='js/main.js')
+    script(src='js/scripts.min.js')

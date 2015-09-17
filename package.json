@@ -27,7 +27,6 @@
     "postcss-nested": "^1.0.0",
     "postcss-simple-extend": "^1.0.0",
     "postcss-simple-vars": "^1.0.0",
-    "postcss-sprites": "^2.0.0",
     "time-grunt": "^1.2.1"
   }
 }
