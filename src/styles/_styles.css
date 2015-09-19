@@ -10,7 +10,6 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-  outline: 1px dotted red;
 }
 
 body {
@@ -79,7 +78,7 @@ body {
 
 .btn {
   text-transform: uppercase;
-  padding: 2.5rem 8rem;
+  padding: 2.3rem 8.4rem;
   color: $color_base;
   background-color: $color-btn;
   @mixin fonts 20, 24. 700;
@@ -99,7 +98,8 @@ body {
     margin-bottom: 8rem;
   }
   &_send {
-    width: 80%;
+    width: 81.5%;
+    margin-top: 4.9rem;
     padding: 2.3rem 8.4rem;
   }
 }
@@ -225,7 +225,6 @@ body {
 .menu-show {display: block;}
 
 .intro {
-  padding-top: 11rem;
   background: $color_secondary;
   text-align: left;
 
@@ -238,7 +237,8 @@ body {
 
   &__title {
     width: 43rem;
-    margin-bottom: 12rem;
+    margin-bottom: 3.6rem;
+    padding-top: 9.5rem;
     color: $color_base;
   }
 
@@ -249,7 +249,7 @@ body {
     color: color($color_secondary s(+ 11%) l(+ 25%));
   }
   .wrapper {
-    background: $color_secondary url('../img/intro.png') no-repeat 95% 62%;
+    background: $color_secondary url('../img/intro.png') no-repeat 95% 61%;
     @media screen and (width < $lg) {
       background-image: none;
     }
@@ -292,7 +292,7 @@ body {
   &__title {
     min-height: 4.8rem;
     margin-top: 9.2rem;
-    margin-bottom: 3rem;
+    margin-bottom: -0.1rem;
     @mixin fonts 22, 24, 700;
   }
 
@@ -345,10 +345,10 @@ body {
   }
 
   .table__row {
+    vertical-align: baseline;
     @media screen and (width < $sm) {
       display: flex;
       flex-wrap: wrap;
-      //justify-content: space-between;
     }
   }
 
@@ -369,8 +369,8 @@ body {
     }
   }
   .table__data {
-    padding: 2rem 2.7rem;
-    @mixin fonts 22, 30, 700, $font-family_add;
+    padding: 1.9rem 2.8rem;
+    @mixin fonts 22, 30, 700;
     @mixin border;
 
     @media screen and (width < $md_pre) {
@@ -382,7 +382,11 @@ body {
     }
   }
   .table__data_last {
-    @mixin fonts 18, 30, 400, $font-family_add;
+    width: 53%;
+    padding-right: 5.5rem;
+    @mixin fonts 18, 30, 400;
+
+    @media screen and (width < $lg) {padding-right: 0;}
     @media screen and (width < $sm) {
       order: -1;
       width: 100%;
@@ -395,18 +399,17 @@ body {
 
 .feedback {
   padding-top: 5.4rem;
-  padding-bottom: 7.5rem;
+  padding-bottom: 4.3rem;
   background-color: $color_tertiary;
 
   &__title {
     margin-bottom: 6rem;
   }
 }
-$input_pad: 1.8rem;
 
 .feedback-form {
   float: left;
-  width: 70%;
+  width: 66%;
   padding-right: 4%;
   @media screen and (width < $md_pre) {
     display: block;
@@ -415,14 +418,13 @@ $input_pad: 1.8rem;
   }
 
   &__item_radio {
-    padding: calc($input_pad + 1.2) 0;
-    @media screen and (width < $md_pre) {padding: 0;}
+    padding: 0.3rem 0;
   }
 
   &__input {
     display: inline-block;
-    width: 80%;
-    padding: $input_pad calc($input_pad + 1);
+    width: 81.5%;
+    padding: 1.3rem 2.6rem;
     line-height: 3rem;
     @mixin fonts 18, 24, 400;
     @mixin border;
@@ -447,9 +449,9 @@ $input_pad: 1.8rem;
   &__label {
     display: inline-block;
     vertical-align: top;
-    width: 20%;
-    padding-top: $input_pad;
-    padding-right: calc($input_pad - 0.3);
+    width: 17%;
+    padding-top: 1.8rem;
+    padding-right: 1.2rem;
     text-align: right;
     @mixin fonts 18, 24, 700;
 
@@ -524,10 +526,11 @@ $input_pad: 1.8rem;
 
 .feedback-description {
   float: right;
-  width: 30%;
+  width: 33%;
+  padding-left: 17px;
 
   &__title {
-    margin-bottom: 2.3rem;
+    margin-bottom: 2.2rem;
     @mixin fonts 22, 30, 700;
   }
   &__text {
@@ -537,7 +540,7 @@ $input_pad: 1.8rem;
     @media screen and (width < $lg) {margin-bottom: 1rem;}
   }
   &__write-us {
-    margin-bottom: 5rem;
+    margin-bottom: 4.5rem;
     @media screen and (width < $lg) {margin-bottom: 3rem;}
   }
 
@@ -558,46 +561,12 @@ $input_pad: 1.8rem;
   background-color: color($color_secondary s(- 26%) l(- 38%));
   color: $color-text;
 }
-/*
-.footer-menu {
-  float: right;
-  font-size: 0;
-
-  &__item {
-    display: inline-block;
-    list-style: none;
-    margin-right: 3rem;
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-  &__link {
-    color: $color-text;
-    @mixin fonts 18, 24, 700;
-  }
-}
-
-.submenu {
-  font-size: 0;
-
-  &__item {
-    list-style: none;
-    margin-bottom: 3.5rem;
-    &:first-of-type {
-      margin-top: 4.5rem;
-    }
-  }
-  &__link {
-    color: hsl(249, 20%, 68%);
-    @mixin fonts 18, 24, 700, $font-family_add;
-  }
-}*/
-
 
 .footer-menu {
-  font-size: 0;
   float: right;
   width: 70%;
+  padding-top: 2.5rem;
+  font-size: 0;
   @media screen and (width < $lg) {display: none;}
 
   &__item {
@@ -605,16 +574,13 @@ $input_pad: 1.8rem;
     vertical-align: top;
     width: 25%;
     min-height: 4.8rem;
-    padding-right: 2rem;
-    &:last-of-type {
-      padding-right: 0;
-    }
+    padding-left: 0.5rem;
   }
   &__title {
     min-height: 4.8rem;
-    margin-bottom: 4.5rem;
+    margin-bottom: 1.3rem;
     color: $color-text;
-    @mixin fonts 18, 24, 700;
+    @mixin fonts 18, 24, 700, $font-family_add;
   }
 }
 
@@ -623,7 +589,7 @@ $input_pad: 1.8rem;
   display: block;
   width: 100%;
   list-style: none;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
   }
   &__link {
     color: hsl(249, 20%, 68%);
