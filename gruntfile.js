@@ -70,8 +70,7 @@ module.exports = function(grunt) {
     // delete production folder
     clean: {
       build: [
-        './build',
-        'src/css/*'
+        './build'
       ]
     },
 

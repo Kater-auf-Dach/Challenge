@@ -10,6 +10,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  outline: 1px dotted red;
 }
 
 body {
@@ -25,13 +26,24 @@ body {
   clear: fix;
 }
 
+.inner__logo {
+  float: left;
+  max-width: 20%;
+}
+
+.inner__menu {
+  float: right;
+  max-width: 80%;
+  padding-top: 2.5rem;
+}
+
 .top-section {
   clear: fix;
 }
 
 .left-section {
   float: left;
-  min-width: 182px;
+  max-width: 20%;
   @media screen and (width < $lg) {
     float: none;
     width: 100%;
@@ -39,10 +51,6 @@ body {
   }
 }
 
-.rigth-section {
-  float: right;
-  @media screen and (width < $lg) {display: none;}
-}
 
 .link {
   display: inline-block;
@@ -88,11 +96,11 @@ body {
   }
 
   &_request {
-    margin-bottom: 10.4rem;
+    margin-bottom: 8rem;
   }
   &_send {
-    width: 100%;
-    margin-top: 2.5rem;
+    width: 80%;
+    padding: 2.3rem 8.4rem;
   }
 }
 
@@ -108,7 +116,6 @@ body {
   background-size: cover;
 
   &_top {
-    float: left;
     @media screen and (width < $md) {
       width: calc(182px / 1.5);
       height: calc(82px / 1.5);
@@ -164,7 +171,6 @@ body {
 
 
 .main-menu {
-  float: right;
   font-size: 0;
 
   @media screen and (width < $lg) {
@@ -232,18 +238,18 @@ body {
 
   &__title {
     width: 43rem;
-    margin-bottom: 4rem;
+    margin-bottom: 12rem;
     color: $color_base;
   }
 
   &__text {
     width: 31rem;
-    margin-bottom: 5.3rem;
+    margin-bottom: 5rem;
     @mixin fonts 18, 30, 400, $font-family_add;
     color: color($color_secondary s(+ 11%) l(+ 25%));
   }
   .wrapper {
-    background: $color_secondary url('../img/intro.png') no-repeat 100% 0%;
+    background: $color_secondary url('../img/intro.png') no-repeat 95% 62%;
     @media screen and (width < $lg) {
       background-image: none;
     }
@@ -285,7 +291,7 @@ body {
 
   &__title {
     min-height: 4.8rem;
-    margin-top: 10rem;
+    margin-top: 9.2rem;
     margin-bottom: 3rem;
     @mixin fonts 22, 24, 700;
   }
@@ -302,7 +308,7 @@ body {
 
   &__title {
     float: left;
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
     @media screen and (width < $md_pre) {
       float: none;
       margin-bottom: 2rem;
@@ -347,11 +353,12 @@ body {
   }
 
   .table__heading {
-    background-color: $color_tertiary;
-    color: color($color_tertiary l(- 69%));
+    padding: 2rem 2.7rem;
     @mixin fonts 18, 30, 400, $font-family_add;
+    text-align: left;
+    color: color($color_tertiary l(- 69%));
+    background-color: $color_tertiary;
     @mixin border;
-    padding: 3rem;
 
     @media screen and (width < $md_pre) {
       padding: 2rem;
@@ -362,8 +369,9 @@ body {
     }
   }
   .table__data {
+    padding: 2rem 2.7rem;
+    @mixin fonts 22, 30, 700, $font-family_add;
     @mixin border;
-    padding: 3rem;
 
     @media screen and (width < $md_pre) {
       padding: 2rem;
@@ -374,6 +382,7 @@ body {
     }
   }
   .table__data_last {
+    @mixin fonts 18, 30, 400, $font-family_add;
     @media screen and (width < $sm) {
       order: -1;
       width: 100%;
@@ -385,7 +394,7 @@ body {
 }
 
 .feedback {
-  padding-top: 5rem;
+  padding-top: 5.4rem;
   padding-bottom: 7.5rem;
   background-color: $color_tertiary;
 
@@ -393,33 +402,39 @@ body {
     margin-bottom: 6rem;
   }
 }
+$input_pad: 1.8rem;
 
 .feedback-form {
-  margin-right: 33%;
-  @media screen and (width < $md_pre) {margin-right: 0;}
-
-  &__item {
-    display: table-row;
-    @media screen and (width < $md_pre) {display: block;}
+  float: left;
+  width: 70%;
+  padding-right: 4%;
+  @media screen and (width < $md_pre) {
+    display: block;
+    width: 100%;
+    margin-right: 0;
   }
+
   &__item_radio {
-    padding: 3rem 0;
+    padding: calc($input_pad + 1.2) 0;
     @media screen and (width < $md_pre) {padding: 0;}
   }
 
   &__input {
     display: inline-block;
-    padding: 1.8rem 2.8rem;
+    width: 80%;
+    padding: $input_pad calc($input_pad + 1);
     line-height: 3rem;
+    @mixin fonts 18, 24, 400;
     @mixin border;
     border-radius: 2px;
     outline: none;
+
+    @media screen and (width < $lg) {display: block;}
 
     &:hover {border-color: color($color-border l(- 20%));}
     &:focus {border-color: hsl(256, 62%, 54%);}
   }
   &__input_text {
-    width: 51.5rem;
     @media screen and (width < $lg) {width: 100%;}
   }
   &__input_text::placeholder {
@@ -430,14 +445,17 @@ body {
     display: none;
   }
   &__label {
-    display: table-cell;
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    padding-top: $input_pad;
+    padding-right: calc($input_pad - 0.3);
     text-align: right;
-    padding-right: 1.5rem;
-    vertical-align: middle;
     @mixin fonts 18, 24, 700;
 
-    @media screen and (width < $md_pre) {
+    @media screen and (width < $lg) {
       display: block;
+      width: 100%;
       margin: 3rem 0;
       text-align: left;
       text-transform: uppercase;
@@ -446,14 +464,28 @@ body {
 }
 
 .feedback-form {
+  &__label_sex {
+    vertical-align: middle;
+    padding-top: 0;
+  }
   &__label_radio {
     display: inline-block;
+    vertical-align: middle;
     position: relative;
+    padding-top: 0;
     padding-left: 5rem;
     margin: 3rem 5rem 3rem 1.5rem;
     @mixin fonts 18, 24, 400, $font-family_add;
     cursor: pointer;
-    @media screen and (width < 460px) {display: block;}
+    @media screen and (width < $lg) {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30%;
+    }
+    @media screen and (width < $sm) {
+      display: block;
+      width: 100%;
+    }
   }
   &__label_radio:before {
     position: absolute;
@@ -495,11 +527,11 @@ body {
   width: 30%;
 
   &__title {
-    margin-bottom: 3rem;
+    margin-bottom: 2.3rem;
     @mixin fonts 22, 30, 700;
   }
   &__text {
-    margin-bottom: 3rem;
+    margin-bottom: 2.7rem;
     color: color($color_tertiary l(- 61%));
     @mixin fonts 18, 24, 400, $font-family_add;
     @media screen and (width < $lg) {margin-bottom: 1rem;}
@@ -526,7 +558,7 @@ body {
   background-color: color($color_secondary s(- 26%) l(- 38%));
   color: $color-text;
 }
-
+/*
 .footer-menu {
   float: right;
   font-size: 0;
@@ -559,9 +591,47 @@ body {
     color: hsl(249, 20%, 68%);
     @mixin fonts 18, 24, 700, $font-family_add;
   }
+}*/
+
+
+.footer-menu {
+  font-size: 0;
+  float: right;
+  width: 70%;
+  @media screen and (width < $lg) {display: none;}
+
+  &__item {
+    display : inline-block;
+    vertical-align: top;
+    width: 25%;
+    min-height: 4.8rem;
+    padding-right: 2rem;
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+  &__title {
+    min-height: 4.8rem;
+    margin-bottom: 4.5rem;
+    color: $color-text;
+    @mixin fonts 18, 24, 700;
+  }
 }
 
-/* IE 8 & IE9 styles */
+.footer-submenu {
+  &__item {
+  display: block;
+  width: 100%;
+  list-style: none;
+  margin-bottom: 3.5rem;
+  }
+  &__link {
+    color: hsl(249, 20%, 68%);
+    @mixin fonts 18, 24, 700, $font-family_add;
+  }
+}
+
+/* IE8 & IE9 styles */
 
 .ie8 {
   & .wrapper {min-width: 960px;}

@@ -13,7 +13,35 @@ mixin table(tableClass, tableData)
       +row(item)
 
 //-Menu
-mixin list(items)
+
+
+mixin footerMenuI(items) 
+  each item in items    
+    +e.item
+      +e('h4').title= item.name
+        +b('ul').footer-submenu
+          each subitem in item.sub
+            +e('li').item: +e('a').link.link(href= subitem.url)= subitem.name  
+                
+mixin navList(items)
+  each item in items
+    if item.name === pageTitle
+      +e('a').link.link.link_active(href= item.url)= item.name
+    else
+      +e('a').link.link(href= item.url)= item.name
+                      
+mixin nav(menuItems)
+  each item in menuItems
+    +navList(item)
+
+
+
+//- mixin menu(prefix)
+//-   nav(class= prefix + 'menu')
+//-    each item in mainMenu
+//-       li(class= prefix + 'menu__item'): a(class= prefix + 'menu__link', href= item.url)= item.title
+
+//- mixin list(items)
   each item in items
     +e('li').item
       if item.name === pageTitle
@@ -25,22 +53,6 @@ mixin list(items)
           each subitem in item.sub
             +e('li').item: +e('a').link.link(href= subitem.url)= subitem.name
             
-mixin navList(items)
-  each item in items
-    if item.name === pageTitle
-      +e('a').link.link.link_active(href= item.url)= item.name
-    else
-      +e('a').link.link(href= item.url)= item.name
-                      
-mixin menu(menuItems)
+//-mixin menu(menuItems)
   each item in menuItems
     +list(item)
-
-mixin nav(menuItems)
-  each item in menuItems
-    +navList(item)
-
-//- mixin menu(prefix)
-//-   nav(class= prefix + 'menu')
-//-    each item in mainMenu
-//-       li(class= prefix + 'menu__item'): a(class= prefix + 'menu__link', href= item.url)= item.title

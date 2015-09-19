@@ -7,15 +7,17 @@ block title
 block header
   +b('header').page-header
     .wrapper
-      +b('a').logo_top(href='#')
-      +b('a').touch-menu(href='#', id='touch-menu') Меню
-      +b('nav').main-menu(id='nav')
-        +nav(mainMenu)
+      .inner__logo
+        +b('a').logo_top(href='#')
+      .inner__menu
+        +b('a').touch-menu(href='#', id='touch-menu') Меню
+        +b('nav').main-menu(id='nav')
+          +nav(mainMenu)
 
 block content
   +b.intro
     .wrapper
-      +e('h1').title.headings Учеба еще никогда не была такой интересной!
+      +e('h2').title.headings Учеба еще никогда не была такой интересной!
       +e('p').text Обучаем готовых к трудоустройству специалистов на теоретических и практических курсах.
       button.btn.btn_request(type= 'submit') Подать заявку
 
@@ -55,7 +57,7 @@ block content
             +e('input').input._text(id= 'name', type= 'text', required, placeholder= 'Представьтесь, пожалуйста', autofill= 'name')
           
           +e.item._radio
-            +e('p').label Пол:
+            +e('p').label._sex Пол:
             +e('input').input._radio(id= 'male', name= 'sex', type= 'radio', checked)
             +e('label').label._radio(for= 'male') Мужской
             +e('input').input._radio(id= 'female', name= 'sex', type= 'radio')
@@ -68,7 +70,7 @@ block content
           +e.item
             +e('label').label(for= 'message')
             button.btn.btn_send(type= 'submit') Отправить
-    
+
 
 block footer
   +b('footer').page-footer
@@ -76,6 +78,31 @@ block footer
       .left-section
         +b('a').logo_bottom
         +e('p').address 197101, г. Санкт-Петербург, <br> пр. Кронверкский, д. 49
-      .rigth-section
-        +b('ul').footer-menu
-          +menu(footerMenu)
+      +b.footer-menu
+        +e.item
+          +e('h4').title Обучение
+          +b('ul').footer-submenu
+            +e('li').item: +e('a').link.link(href='#') Расписание
+            +e('li').item: +e('a').link.link(href='#') Предметы
+            +e('li').item: +e('a').link.link(href='#') Практика
+        +e.item
+          +e('h4').title Выпускники
+          +b('ul').footer-submenu
+            +e('li').item: +e('a').link.link(href='#') Достижения
+            +e('li').item: +e('a').link.link(href='#') Отзывы
+            +e('li').item: +e('a').link.link(href='#') Найти
+        +e.item
+          +e('h4').title Как поступить
+          +b('ul').footer-submenu
+            +e('li').item: +e('a').link.link(href='#') На коммерцию
+            +e('li').item: +e('a').link.link(href='#') Целевой набор
+            +e('li').item: +e('a').link.link(href='#') На бюджет
+        +e.item
+          +e('h4').title Контакты
+          +b('ul').footer-submenu
+            +e('li').item: +e('a').link.link(href='#') Обратная связь
+            +e('li').item: +e('a').link.link(href='#') Схема проезда
+            +e('li').item: +e('a').link.link(href='#') Телефон/факс              
+
+      //- +b.footer-menu
+      //-   +footerMenu(footerMenu)
