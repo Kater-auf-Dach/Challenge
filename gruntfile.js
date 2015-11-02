@@ -118,6 +118,13 @@ module.exports = function(grunt) {
       tasks: ['jade']
     }
   },
+  
+  'gh-pages': {
+    options: {
+      base: 'build'
+    },
+    src: ['**']
+  },
 
     // livereload
     browserSync: {
@@ -165,11 +172,11 @@ module.exports = function(grunt) {
      'clean:build',
      'jade',
      'postcss',
-     'copy:js',
      'uglify',
      'copy:img',
      'copy:fonts',
      'imagemin',
+     'gh-pages'
    ]);
 
    // js only
