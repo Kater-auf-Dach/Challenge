@@ -159,10 +159,8 @@ module.exports = function(grunt) {
      'jade',
      'postcss',
      'copy:js',
-     //'uglify',
      'copy:img',
      'copy:fonts',
-     //'imagemin',
      'browserSync',
      'watch'
    ]);
